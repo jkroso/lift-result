@@ -1,0 +1,24 @@
+{
+  "name": "lift-result",
+  "version": "0.1.0",
+  "description": "lift functions so they can handle Results as if they were plain values",
+  "dependencies": {
+    "result-type": "1.0.0",
+    "result": "0.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jkroso/lift-result.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jkroso/lift-result/issues"
+  },
+  "keywords": [
+    "result",
+    "promise",
+    "decorate",
+    "function"
+  ],
+  "author": "Jake Rosoman",
+  "license": "MIT"
+}
