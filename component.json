@@ -2,7 +2,7 @@
   "name": "lift-result",
   "repo": "jkroso/lift-result",
   "description": "lift functions so they can handle Results as if they were plain values",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "result",
     "promise",
@@ -10,7 +10,7 @@
     "function"
   ],
   "dependencies": {
-    "jkroso/result": "0.3.4",
+    "jkroso/result": "0.4.2",
     "jkroso/result-type": "1.0.0"
   },
   "development": {
