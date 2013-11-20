@@ -1,18 +1,13 @@
 {
   "name": "lift-result",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "lift functions so they can handle Results as if they were plain values",
   "dependencies": {
     "result-type": "1.0.0",
-    "result": "0.4.2"
+    "result": "~0.4.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jkroso/lift-result.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jkroso/lift-result/issues"
-  },
+  "repository": "git://github.com/jkroso/lift-result.git",
+  "bugs": "https://github.com/jkroso/lift-result/issues",
   "keywords": [
     "result",
     "promise",
