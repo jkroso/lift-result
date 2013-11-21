@@ -9,13 +9,12 @@ test: node_modules
 		--timeout 500 \
 		--check-leaks \
 		--bail
+	@sed 's/lift-result/.\//' < Readme.md | jsmd
 
-node_modules: component.json package.json
-	@packin install \
+node_modules: *.json
+	@packin install -Re \
 		--meta package.json,component.json,deps.json \
-		--folder node_modules \
-		--executables \
-		--no-retrace
+		--folder node_modules
 
 bench: node_modules
 	@for dir in bench/*; do \
