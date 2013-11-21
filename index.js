@@ -1,19 +1,23 @@
 
 var ResultType = require('result-type')
 var Result = require('result')
+var transfer = Result.transfer
 var failed = Result.failed
 var read = Result.read
 
 /**
- * decorate `ƒ` so it can receive Results as arguments
+ * decorate `fn` so it can receive promises as arguments. Return
+ * values will be unboxed wherever possible however errors will
+ * be caught and boxed with a promise since this means you don't
+ * have to handle sync and async errors separately.
  *
- * @param {Function} ƒ
+ * @param {Function} fn
  * @return {Function}
  */
 
-module.exports = function(ƒ){
-	if (ƒ.prototype) decorated.prototype = ƒ.prototype
-	decorated.plain = ƒ
+module.exports = function(fn){
+	if (fn.prototype) decorated.prototype = fn.prototype
+	decorated.plain = fn
 	function decorated(){
 		var i = arguments.length
 
@@ -22,37 +26,33 @@ module.exports = function(ƒ){
 			var self = this
 			var args = arguments
 			var result = new Result
-			var fail = function(e){
-				result.error(e)
-			}
+			var fail = function(e){ result.error(e) }
 			var next = function(value){
 				args[i] = value
 				if (i) return read(args[--i], next, fail)
 
-				// run ƒ
-				try { value = ƒ.apply(self, args) }
+				try { value = fn.apply(self, args) }
 				catch (e) { return result.error(e)}
 
 				if (value === undefined && self instanceof decorated) {
-					result.write(self)
-				} else if (value instanceof ResultType) {
-					value.read(function(value){
-						result.write(value)
-					}, fail)
-				} else {
-					result.write(value)
+					return result.write(self)
 				}
+				transfer(value, result)
 			}
 			args[i].read(next, fail)
-			return result
+			// unbox if possible
+			return result.state == 'done'
+				? result.value
+				: result
 		}
 
-		try { result = ƒ.apply(this, arguments) }
+		// catch errors
+		try { result = fn.apply(this, arguments) }
 		catch (e) { return failed(e) }
+
 		// used as a constructor
-		return result === undefined && this instanceof decorated
-			? this
-			: result
+		if (result === undefined && this instanceof decorated) return this
+		return result
 	}
 	return decorated
 }

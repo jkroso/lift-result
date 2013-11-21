@@ -19,6 +19,10 @@ describe('lift(ƒ)', function(){
 		lift(Math.pow)(2, 3).should.equal(8)
 	})
 
+	it('should unbox values if possible', function(){
+		lift(Math.pow)(Result.wrap(2), Result.wrap(3)).should.equal(8)
+	})
+
 	it('should resolve arguments before calling `ƒ`', function(){
 		lift(ƒ)(
 			Result.wrap(4),
@@ -48,7 +52,7 @@ describe('lift(ƒ)', function(){
 		it('when sync', function(){
 			lift(identity)(retValue).should.equal(retValue)
 		})
-		
+
 		it('when delayed', function(done){
 			lift(identity)(delay(retValue)).then(function(val){
 				val.should.equal(retValue)
@@ -278,7 +282,7 @@ if (typeof window == 'undefined') describe('fs', function(){
 	it('should have all the functions', function(){
 		fs.should.have.keys(Object.keys(require('fs')))
 	})
-	
+
 	it('should special case `fs.exists`', function(done){
 		fs.exists(__filename).read(function(yes){
 			yes.should.be.true
