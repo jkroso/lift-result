@@ -10,7 +10,7 @@
   ],
   "dependencies": {
     "jkroso/result-type": "1.0.0",
-    "jkroso/result": "0.4.3"
+    "jkroso/result": "0.4.4"
   },
   "development": {
     "visionmedia/mocha": "*",
