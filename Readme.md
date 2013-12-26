@@ -5,9 +5,11 @@
 
 ## Installation
 
-_With [packin](//github.com/jkroso/packin) or [component](//github.com/component/component)_
+With your favourite package manager:
 
-	$ packin add jkroso/lift-result
+- [packin](//github.com/jkroso/packin): `packin add lift-result`
+- [component](//github.com/component/component#installing-packages): `component install jkroso/lift-result`
+- [npm](//npmjs.org/doc/cli/npm-install.html): `npm install lift-result`
 
 then in your app:
 
@@ -65,7 +67,3 @@ apply(Result.wrap(1), 2, Array) // => [1, 2]
 ```js
 sexpr(Array, Result.wrap(1), 2) // => [1, 2]
 ```
-
-## Running the tests
-
-Just run `make` and navigate your browser to the test directory.
