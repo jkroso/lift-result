@@ -2,28 +2,11 @@
   "name": "lift-result",
   "repo": "jkroso/lift-result",
   "description": "lift functions so they can handle Results as if they were plain values",
-  "keywords": [
-    "result",
-    "promise",
-    "decorate",
-    "function"
-  ],
+  "keywords": ["result", "promise", "decorate", "function"],
   "dependencies": {
     "jkroso/result-type": "1.0.0",
-    "jkroso/result": "0.4.4"
+    "jkroso/result": "0.4.6"
   },
-  "development": {
-    "visionmedia/mocha": "*",
-    "chaijs/chai-spies": "*",
-    "vesln/b": "fc64f24",
-    "jkroso/serve": "*",
-    "chaijs/chai": "*"
-  },
-  "scripts": [
-    "index.js",
-    "cps.js",
-    "apply.js",
-    "sexpr.js"
-  ],
+  "scripts": ["index.js", "cps.js", "apply.js", "sexpr.js"],
   "license": "MIT"
 }

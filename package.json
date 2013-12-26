@@ -4,16 +4,19 @@
   "description": "lift functions so they can handle Results as if they were plain values",
   "dependencies": {
     "result-type": "1.0.0",
-    "result": "~0.4.4"
+    "result": "~0.4.6"
+  },
+  "devDependencies": {
+    "serve": "jkroso/serve",
+    "b": "vesln/b#fc64f24",
+    "chai-spies": "*",
+    "mocha": "*",
+    "jsmd": "*",
+    "chai": "*"
   },
   "repository": "git://github.com/jkroso/lift-result.git",
   "bugs": "https://github.com/jkroso/lift-result/issues",
-  "keywords": [
-    "result",
-    "promise",
-    "decorate",
-    "function"
-  ],
+  "keywords": ["result", "promise", "decorate", "function"],
   "author": "Jake Rosoman",
   "license": "MIT"
 }
