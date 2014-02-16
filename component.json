@@ -5,7 +5,7 @@
   "keywords": ["result", "promise", "decorate", "function"],
   "dependencies": {
     "jkroso/result-type": "1.0.0",
-    "jkroso/result": "0.4.6"
+    "jkroso/result": "1.0.1"
   },
   "scripts": ["index.js", "cps.js", "apply.js", "sexpr.js"],
   "license": "MIT"
