@@ -42,7 +42,7 @@ answer.value // => 3
 
 ### cps(fn)
 
-  decorate a node function so it can reciece Results as arguments and will return a result rather than take a callback as its last argument.
+  decorate a node function so it can receive Results as arguments and will return a result rather than take a callback as its last argument.
 
 ```js
 var fs = require('fs')
