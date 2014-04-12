@@ -1,10 +1,9 @@
 {
   "name": "lift-result",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "lift functions so they can handle Results as if they were plain values",
   "dependencies": {
-    "result-type": "1.0.0",
-    "result": "~1.0.1"
+    "result": "~1.0.2"
   },
   "devDependencies": {
     "serve": "jkroso/serve",

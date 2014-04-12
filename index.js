@@ -1,7 +1,7 @@
 
-var ResultType = require('result-type')
 var Result = require('result')
 var transfer = Result.transfer
+var ResultType = Result.Type
 var failed = Result.failed
 var read = Result.read
 

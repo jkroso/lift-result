@@ -1,6 +1,6 @@
 
-var ResType = require('result-type')
 var Result = require('result')
+var ResultType = Result.Type
 var when = Result.read
 
 /**
@@ -21,7 +21,7 @@ module.exports = function(fn){
     var i = arguments.length
 
     // scan for Result parameters
-    while (i--) if (arguments[i] instanceof ResType) {
+    while (i--) if (arguments[i] instanceof ResultType) {
       var args = arguments
       var self = this
       var fail = function(e){
