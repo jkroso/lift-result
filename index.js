@@ -16,43 +16,43 @@ var read = Result.read
  */
 
 module.exports = function(fn){
-	if (fn.prototype) decorated.prototype = fn.prototype
-	decorated.plain = fn
-	function decorated(){
-		var i = arguments.length
+  if (fn.prototype) decorated.prototype = fn.prototype
+  decorated.plain = fn
+  function decorated(){
+    var i = arguments.length
 
-		// scan for Results
-		while (i--) if (arguments[i] instanceof ResultType) {
-			var self = this
-			var args = arguments
-			var result = new Result
-			var fail = function(e){ result.error(e) }
-			var next = function(value){
-				args[i] = value
-				if (i) return read(args[--i], next, fail)
+    // scan for Results
+    while (i--) if (arguments[i] instanceof ResultType) {
+      var self = this
+      var args = arguments
+      var result = new Result
+      var fail = function(e){ result.error(e) }
+      var next = function(value){
+        args[i] = value
+        if (i) return read(args[--i], next, fail)
 
-				try { value = fn.apply(self, args) }
-				catch (e) { return result.error(e)}
+        try { value = fn.apply(self, args) }
+        catch (e) { return result.error(e)}
 
-				if (value === undefined && self instanceof decorated) {
-					return result.write(self)
-				}
-				transfer(value, result)
-			}
-			args[i].read(next, fail)
-			// unbox if possible
-			return result.state == 'done'
-				? result.value
-				: result
-		}
+        if (value === undefined && self instanceof decorated) {
+          return result.write(self)
+        }
+        transfer(value, result)
+      }
+      args[i].read(next, fail)
+      // unbox if possible
+      return result.state == 'done'
+        ? result.value
+        : result
+    }
 
-		// catch errors
-		try { result = fn.apply(this, arguments) }
-		catch (e) { return failed(e) }
+    // catch errors
+    try { result = fn.apply(this, arguments) }
+    catch (e) { return failed(e) }
 
-		// used as a constructor
-		if (result === undefined && this instanceof decorated) return this
-		return result
-	}
-	return decorated
+    // used as a constructor
+    if (result === undefined && this instanceof decorated) return this
+    return result
+  }
+  return decorated
 }

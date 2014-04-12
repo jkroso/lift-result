@@ -10,5 +10,5 @@ var lift = require('./')
  */
 
 module.exports = lift(function(){
-	return arguments[--arguments.length].apply(this, arguments)
+  return arguments[--arguments.length].apply(this, arguments)
 })

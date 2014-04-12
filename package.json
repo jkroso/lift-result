@@ -10,7 +10,11 @@
     "serve": "jkroso/serve",
     "b": "vesln/b#fc64f24",
     "chai-spies": "*",
-    "mocha": "*",
+    "hydro-chai": "*",
+    "hydro-html": "*",
+    "hydro-dot": "*",
+    "hydro-bdd": "*",
+    "hydro": "*",
     "jsmd": "*",
     "chai": "*"
   },
