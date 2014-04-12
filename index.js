@@ -16,8 +16,9 @@ var read = Result.read
  */
 
 module.exports = function(fn){
-  if (fn.prototype) decorated.prototype = fn.prototype
   decorated.plain = fn
+  for (var key in fn) decorated[key] = fn[key]
+  if (fn.prototype) decorated.prototype = fn.prototype
   function decorated(){
     var i = arguments.length
 
